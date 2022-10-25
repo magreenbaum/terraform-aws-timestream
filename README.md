@@ -2,7 +2,7 @@
 
 Provisions AWS TimeStream resources.
 
-Note that use of this module is intended to create resources which will incur monetary charges on your AWS bill. Run terraform destroy when you no longer need these resources.
+Note that use of this module is intended to create resources which will incur monetary charges on your AWS bill. Run `terraform destroy` when you no longer need these resources.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
