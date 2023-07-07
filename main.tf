@@ -42,4 +42,18 @@ resource "aws_timestreamwrite_table" "table" {
       memory_store_retention_period_in_hours  = lookup(retention_properties.value, "memory_store_retention_period_in_hours", null)
     }
   }
+
+  dynamic "schema" {
+    for_each = length(lookup(each.value, "schema", {})) > 0 ? [each.value.schema] : []
+    content {
+      dynamic "composite_partition_key" {
+        for_each = length(lookup(schema.value, "composite_partition_key", {})) > 0 ? [schema.value.composite_partition_key] : []
+        content {
+          enforcement_in_record = lookup(composite_partition_key.value, "enforcement_in_record", null)
+          name                  = lookup(composite_partition_key.value, "name", null)
+          type                  = lookup(composite_partition_key.value, "type", null)
+        }
+      }
+    }
+  }
 }

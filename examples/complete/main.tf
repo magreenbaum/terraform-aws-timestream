@@ -13,11 +13,6 @@ resource "aws_s3_bucket" "bucket" {
   bucket = "timestream-${random_string.random.id}"
 }
 
-resource "aws_s3_bucket_acl" "acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
-}
-
 resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
   bucket = aws_s3_bucket.bucket.id
   rule {
@@ -56,6 +51,13 @@ module "timestream" {
       retention_properties = {
         magnetic_store_retention_period_in_days = 3
         memory_store_retention_period_in_hours  = 24
+      }
+      schema = {
+        composite_partition_key = {
+          enforcement_in_record = "REQUIRED"
+          name                  = "dimension-key"
+          type                  = "DIMENSION"
+        }
       }
     }
   ]

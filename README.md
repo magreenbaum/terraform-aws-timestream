@@ -10,13 +10,13 @@ Note that use of this module is intended to create resources which will incur mo
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.35 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.7 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.35 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.36.1 |
 
 ## Modules
 
@@ -33,10 +33,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_create"></a> [create](#input\_create) | n/a | `bool` | `true` | no |
+| <a name="input_create"></a> [create](#input\_create) | Whether to create the Timestream database | `bool` | `true` | no |
 | <a name="input_database_name"></a> [database\_name](#input\_database\_name) | The name of the Timestream database | `string` | n/a | yes |
 | <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | The ARN of the KMS key to be used to encrypt the data stored in the database | `string` | `null` | no |
-| <a name="input_tables"></a> [tables](#input\_tables) | n/a | `any` | `[]` | no |
+| <a name="input_tables"></a> [tables](#input\_tables) | List of tables and their configurations | `any` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to assign to this resource | `map(string)` | `{}` | no |
 
 ## Outputs

@@ -1,6 +1,6 @@
 variable "create" {
   type        = bool
-  description = ""
+  description = "Whether to create the Timestream database"
   default     = true
 }
 
@@ -23,6 +23,6 @@ variable "tags" {
 
 variable "tables" {
   type        = any
-  description = ""
+  description = "List of tables and their configurations"
   default     = []
 }
