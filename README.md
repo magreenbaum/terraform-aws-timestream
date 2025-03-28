@@ -16,7 +16,7 @@ Note that use of this module is intended to create resources which will incur mo
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.36.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.7 |
 
 ## Modules
 
@@ -35,8 +35,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the Timestream database | `bool` | `true` | no |
 | <a name="input_database_name"></a> [database\_name](#input\_database\_name) | The name of the Timestream database | `string` | n/a | yes |
+| <a name="input_database_tags"></a> [database\_tags](#input\_database\_tags) | Map of tags to assign to the database resource | `map(string)` | `{}` | no |
 | <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | The ARN of the KMS key to be used to encrypt the data stored in the database | `string` | `null` | no |
-| <a name="input_tables"></a> [tables](#input\_tables) | List of tables and their configurations | `any` | `[]` | no |
+| <a name="input_tables"></a> [tables](#input\_tables) | List of tables and their configurations | `any` | `{}` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to assign to this resource | `map(string)` | `{}` | no |
 
 ## Outputs

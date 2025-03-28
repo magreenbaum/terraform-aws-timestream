@@ -15,6 +15,12 @@ variable "kms_key_id" {
   default     = null
 }
 
+variable "database_tags" {
+  type        = map(string)
+  description = "Map of tags to assign to the database resource"
+  default     = {}
+}
+
 variable "tags" {
   type        = map(string)
   description = "Map of tags to assign to this resource"
@@ -24,5 +30,5 @@ variable "tags" {
 variable "tables" {
   type        = any
   description = "List of tables and their configurations"
-  default     = []
+  default     = {}
 }

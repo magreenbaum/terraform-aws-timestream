@@ -2,6 +2,14 @@ provider "aws" {
   region = "us-west-2"
 }
 
+locals {
+  name = "complete-timestream"
+
+  tags = {
+    name = local.name
+  }
+}
+
 # s3 bucket for this example only
 resource "random_string" "random" {
   length  = 5
@@ -35,17 +43,16 @@ module "timestream" {
   source        = "../../"
   database_name = "test"
 
-  tables = [
-    {
-      table_name = "test"
-    },
-    {
-      table_name = "test1"
-      magnetic_store_writes = {
+  tables = {
+    test = {}
+    test1 = {
+      table_name = "thisisatesttable"
+      magnetic_store_write_properties = {
         enabled = true
-        rejected_data_location = {
+        magnetic_store_rejected_data_location = {
           bucket_name       = aws_s3_bucket.bucket.id
           encryption_option = "SSE_S3"
+          object_key_prefix = "test"
         }
       }
       retention_properties = {
@@ -59,7 +66,10 @@ module "timestream" {
           type                  = "DIMENSION"
         }
       }
+      tags = {
+        table = "test1"
+      }
     }
-  ]
-
+  }
+  tags = local.tags
 }
